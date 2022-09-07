@@ -3,3 +3,8 @@ name: EnhancedChat
 author: desmondcchi
 version: 0.0.1
 description: Custom chat and messages!
+commands:
+   nickname:
+      usage: /nickname
+      aliases: nick
+      description: Set a custom name.
