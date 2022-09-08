@@ -12,3 +12,6 @@ commands:
       usage: /nickname reset
       aliases: nick reset
       description: Reset nickname to default name.
+   colors:
+      usage: /colors
+      description: Show all color formatting.
