@@ -5,6 +5,10 @@ version: 0.0.1
 description: Custom chat and messages!
 commands:
    nickname:
-      usage: /nickname
+      usage: /nickname <NICKNAME>
       aliases: nick
       description: Set a custom name.
+   nickname reset:
+      usage: /nickname reset
+      aliases: nick reset
+      description: Reset nickname to default name.
