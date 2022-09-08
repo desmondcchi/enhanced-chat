@@ -28,13 +28,18 @@ public class Nickname implements CommandExecutor {
 						return true;
 					}
 					
-					player.setDisplayName(args[0]);
-					player.setPlayerListName(args[0]);
-					player.sendMessage(ChatColor.AQUA + "Your nickname is now: " + ChatColor.RESET + args[0]);
+					String formattedName = colorFormat(args[0]);
+					player.setDisplayName(formattedName);
+					player.setPlayerListName(formattedName);
+					player.sendMessage(ChatColor.AQUA + "Your nickname is now: " + ChatColor.RESET + formattedName);
 				}
 			}
 		}
 		
 		return true;
+	}
+	
+	private String colorFormat(String msg) {
+		return ChatColor.translateAlternateColorCodes('&', msg);
 	}
 }
