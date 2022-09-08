@@ -4,10 +4,17 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 
 import net.md_5.bungee.api.ChatColor;
 
 public class Nickname implements CommandExecutor {
+	private Plugin plugin;
+	
+	public Nickname(Plugin plugin) {
+		this.plugin = plugin;
+	}
+	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (label.equalsIgnoreCase("nick") || label.equalsIgnoreCase("nickname")) {
@@ -25,6 +32,9 @@ public class Nickname implements CommandExecutor {
 						player.setPlayerListName(player.getName());
 						player.sendMessage(ChatColor.AQUA + "Your nickname has been reset!");
 						
+						plugin.getConfig().set(player.getUniqueId().toString(), null);
+						plugin.saveConfig();
+						
 						return true;
 					}
 					
@@ -32,6 +42,9 @@ public class Nickname implements CommandExecutor {
 					player.setDisplayName(formattedName);
 					player.setPlayerListName(formattedName);
 					player.sendMessage(ChatColor.AQUA + "Your nickname is now: " + ChatColor.RESET + formattedName);
+					
+					plugin.getConfig().set(player.getUniqueId().toString(), formattedName);
+					plugin.saveConfig();
 				}
 			}
 		}

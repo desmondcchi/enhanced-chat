@@ -9,12 +9,14 @@ import me.desmondcchi.enhanced_chat.listeners.PlayerJoinAndLeave;
 public class Main extends JavaPlugin {
 	@Override
 	public void onEnable() {
+		saveDefaultConfig();
+		
 		// Commands
-		this.getCommand("nickname").setExecutor(new Nickname());
+		this.getCommand("nickname").setExecutor(new Nickname(this));
 		
 		// Listeners
 		this.getServer().getPluginManager().registerEvents(new PlayerChat(), this);
-		this.getServer().getPluginManager().registerEvents(new PlayerJoinAndLeave(), this);
+		this.getServer().getPluginManager().registerEvents(new PlayerJoinAndLeave(this), this);
 	}
 	
 	@Override
